@@ -16,6 +16,7 @@ repos.on('push', function(push) {
 });
 
 var server = http.createServer(function(req, res) {
+  console.log(req);
   repos.handle(req, res);
 });
 
