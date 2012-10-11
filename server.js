@@ -8,7 +8,7 @@ var repos = pushover(reposPath);
 
 repos.on('push', function(push) {
   var repo = push.repo;
-  var cwd = push.cwd;
+  //var cwd = push.cwd;
   var commit = push.commit;
   var branch = push.branch;
   var tag = push.tag;
