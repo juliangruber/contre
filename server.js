@@ -1,6 +1,5 @@
 var pushover = require('pushover');
 var http = require('http');
-var through = require('through');
 
 var port = process.env.PORT || 3000;
 var reposPath = process.env.REPOS || __dirname+'/repos';
@@ -12,25 +11,13 @@ repos.on('push', function(push) {
   var cwd = push.cwd;
   var commit = push.commit;
   var branch = push.branch;
+  var tag = push.tag;
+  console.log(repo, branch, tag);
   push.accept();
 });
 
 var server = http.createServer(function(req, res) {
-  console.log();
-  console.log('url', req.url);
-  console.log('method', req.method);
-
-  req.on('data', function(data) {
-    console.log('req', data.toString())
-  });
-
-  var inspect = through(function(data) {
-    console.log('res', data.toString());
-    this.emit('data', data);
-  });
-  inspect.setHeader = res.setHeader;
-  inspect.pipe(res);
-  repos.handle(req, inspect);
+  repos.handle(req, res);
 });
 
 server.listen(port, function() {
