@@ -11,7 +11,6 @@ repos.on('push', function(push) {
   var cwd = push.cwd;
   var commit = push.commit;
   var branch = push.branch;
-  console.log(push);
   push.accept();
 });
 
