@@ -20,8 +20,12 @@ var server = http.createServer(function(req, res) {
   console.log('url', req.url);
   console.log('method', req.method);
 
+  req.on('data', function(data) {
+    console.log('req', data.toString())
+  });
+
   var inspect = through(function(data) {
-    console.log(data.toString());
+    console.log('res', data.toString());
     this.emit('data', data);
   });
   inspect.setHeader = res.setHeader;
