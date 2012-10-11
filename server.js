@@ -15,7 +15,12 @@ repos.on('push', function(push) {
 });
 
 var server = http.createServer(function(req, res) {
-  console.log(req);
+  console.log();
+  console.log('url', req.url);
+  console.log('method', req.method);
+  res.on('data', function(data) {
+    console.log('res', data.toString());
+  })
   repos.handle(req, res);
 });
 
