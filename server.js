@@ -7,8 +7,12 @@ var reposPath = process.env.REPOS || __dirname+'/repos';
 var repos = pushover(reposPath);
 
 repos.on('push', function(push) {
-  console.log('push');
+  var repo = push.repo;
+  var cwd = push.cwd;
+  var commit = push.commit;
+  var branch = push.branch;
   console.log(push);
+  push.accept();
 });
 
 var server = http.createServer(function(req, res) {
