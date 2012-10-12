@@ -1,0 +1,25 @@
+{
+  "name": "layout",
+  "version": "0.0.0",
+  "description": "Lay git repos out on a filesystem",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "seq": "~0.3.5",
+    "pushover": "~1.0.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliangruber/git-laid"
+  },
+  "keywords": [
+    "git",
+    "github",
+    "filesystem"
+  ],
+  "author": "Julian Gruber <julian@juliangruber.com>",
+  "license": "MIT"
+}
