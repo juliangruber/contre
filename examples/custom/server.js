@@ -1,8 +1,8 @@
 var http = require('http');
 var pushover = require('pushover');
-var Layout = require('../../');
+var LayOut = require('../../');
 
-var layer = Layout({
+var layer = LayOut({
   repos : __dirname + '/repos',
   static : __dirname + '/static'
 });

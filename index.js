@@ -6,18 +6,18 @@ module.exports = function(opts) {
   if (!opts.repos || !opts.static) {
     throw new Error('opts.{repos,static} required');
   }
-  return new Layout(opts);
+  return new LayOut(opts);
 };
 
-function Layout(opts) {
+function LayOut(opts) {
   EventEmitter.call(this);
   this.repos = opts.repos;
   this.static = opts.static;
 }
 
-Layout.prototype = new EventEmitter;
+LayOut.prototype = new EventEmitter;
 
-Layout.prototype.store = function(push) {
+LayOut.prototype.lay = function(push) {
   var self = this;
   var repo = push.repo;
   var repoClean = repo.split('.git')[0];
@@ -44,17 +44,17 @@ Layout.prototype.store = function(push) {
   });
 }
 
-Layout.prototype.handle = function() {
+LayOut.prototype.handle = function() {
   var pushover = require('pushover');
   var repos = pushover(this.repos);
   var self = this;
 
   repos.on('push', function(push) {
-    self.store(push);
+    self.lay(push);
     push.accept();
   });
   repos.on('tag', function(tag) {
-    self.store(tag);
+    self.lay(tag);
     tag.accept();
   });
 
