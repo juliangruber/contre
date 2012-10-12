@@ -1,7 +1,7 @@
 {
-  "name": "layout",
-  "version": "0.0.0",
-  "description": "Lay git repos out on a filesystem",
+  "name": "lay-out",
+  "version": "0.0.1",
+  "description": "Lay out git repos on a filesystem - github style",
   "main": "index.js",
   "directories": {
     "example": "examples"
