@@ -11,10 +11,14 @@ repos.on('push', function(push) {
   //var cwd = push.cwd;
   var commit = push.commit;
   var branch = push.branch;
-  var tag = push.tag;
-  console.log(repo, branch, tag);
+  console.log(repo, branch);
   push.accept();
 });
+
+repos.on('tag', function(tag) {
+  console.log(arguments);
+  tag.accept();
+})
 
 var server = http.createServer(function(req, res) {
   repos.handle(req, res);
