@@ -1,23 +1,36 @@
 var spawn = require('child_process').spawn;
 var Seq = require('seq');
 var EventEmitter = require('events').EventEmitter;
+var pushover = require('pushover');
 
 module.exports = function(opts) {
   if (!opts.repos || !opts.static) {
     throw new Error('opts.{repos,static} required');
   }
-  return new LayOut(opts);
+  return new Contre(opts);
 };
 
-function LayOut(opts) {
+/**
+ * Contre continuous release server
+ *
+ * @param opts.from repo folder
+ * @param opts.to   release folder
+ */
+function Contre(opts) {
   EventEmitter.call(this);
   this.repos = opts.from;
   this.static = opts.to;
 }
 
-LayOut.prototype = new EventEmitter;
+Contre.prototype = new EventEmitter;
 
-LayOut.prototype.lay = function(push) {
+/**
+ * Release pushed code
+ *
+ * @param push.repo
+ * @param push.{branch|version}
+ */
+Contre.prototype.release = function(push) {
   var self = this;
   var repo = push.repo;
   var repoClean = repo.split('.git')[0];
@@ -44,17 +57,21 @@ LayOut.prototype.lay = function(push) {
   });
 }
 
-LayOut.prototype.handle = function() {
-  var pushover = require('pushover');
-  var repos = pushover(this.repos);
+/**
+ * Host a Contre server
+ *
+ * @returns {Function} http request handler
+ */
+Contre.prototype.handle = function() {
   var self = this;
+  var repos = pushover(self.repos);
 
   repos.on('push', function(push) {
-    self.lay(push);
+    self.release(push);
     push.accept();
   });
   repos.on('tag', function(tag) {
-    self.lay(tag);
+    self.release(tag);
     tag.accept();
   });
 

@@ -1,14 +1,14 @@
 {
-  "name": "lay-out",
-  "version": "0.0.1",
-  "description": "Lay out git repos on a filesystem - github style",
+  "name": "contre",
+  "version": "0.1.0",
+  "description": "Continuously release git repos into github-style directories",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "dependencies": {
     "seq": "~0.3.5",
-    "pushover": "~1.0.3"
+    "pushover": "git://github.com/juliangruber/pushover.git"
   },
   "devDependencies": {
     "mocha": "*",
@@ -19,12 +19,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/juliangruber/git-laid"
+    "url": "https://github.com/juliangruber/contre"
   },
   "keywords": [
     "git",
     "github",
-    "filesystem"
+    "filesystem",
+    "release"
   ],
   "author": "Julian Gruber <julian@juliangruber.com>",
   "license": "MIT"
