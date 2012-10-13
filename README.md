@@ -3,8 +3,8 @@
 
 Continuously release from git repos into a github-style directory structure.
 
-_Due to a limitation of juliangruber/pushover, pushing multiple tags at once
-doesn't work_
+_Due to a current limitation of juliangruber/pushover tags have to be pushed
+seperately_
 
 ## Usage
 

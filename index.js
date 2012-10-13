@@ -2,6 +2,7 @@ var spawn = require('child_process').spawn;
 var Seq = require('seq');
 var EventEmitter = require('events').EventEmitter;
 var pushover = require('pushover');
+var remove = require('remove');
 
 module.exports = function(opts) {
   if (!opts.from || !opts.to) {
@@ -42,6 +43,9 @@ Contre.prototype.release = function(push) {
   push.on('accept', function() {
     push.on('exit', function() {
       Seq()
+        .seq(function() {
+          remove(dest, this.ok);
+        })
         .seq(function() {
           var ps = spawn('git', ['clone', repos + '/' + repo, dest]);
           ps.stderr.pipe(process.stderr, { end : false });
