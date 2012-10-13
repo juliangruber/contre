@@ -1,8 +1,8 @@
 var http = require('http');
 var pushover = require('pushover');
-var LayOut = require('../../');
+var Contre = require('../../');
 
-var layer = LayOut({
+var contre = Contre({
   from : __dirname + '/repos',
   to : __dirname + '/static'
 });
@@ -10,12 +10,12 @@ var layer = LayOut({
 var repos = pushover(__dirname + '/repos');
 
 repos.on('push', function(push) {
-  layer.lay(push);
+  contre.release(push);
   push.accept();
 });
 
 repos.on('tag', function(tag) {
-  layer.lay(tag);
+  contre.release(tag);
   tag.accept();
 });
 

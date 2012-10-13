@@ -1,13 +1,13 @@
-var LayOut = require('../../');
+var Contre = require('../../');
 var http = require('http');
 
-var layer = LayOut({
+var contre = Contre({
   from : __dirname + '/repos',
   to : __dirname + '/static'
 });
 
-layer.on('laid', function(repo, rev) {
-  console.log('Laid out ' + repo + '/' + rev);
+contre.on('release', function(repo, rev) {
+  console.log('released ' + repo + '/' + rev);
 })
 
-http.createServer(layer.handle()).listen(3000);
+http.createServer(contre.handle()).listen(3000);
