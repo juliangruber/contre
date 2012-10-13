@@ -11,8 +11,8 @@ module.exports = function(opts) {
 
 function LayOut(opts) {
   EventEmitter.call(this);
-  this.repos = opts.repos;
-  this.static = opts.static;
+  this.repos = opts.from;
+  this.static = opts.to;
 }
 
 LayOut.prototype = new EventEmitter;

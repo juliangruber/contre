@@ -3,8 +3,8 @@ var pushover = require('pushover');
 var LayOut = require('../../');
 
 var layer = LayOut({
-  repos : __dirname + '/repos',
-  static : __dirname + '/static'
+  from : __dirname + '/repos',
+  to : __dirname + '/static'
 });
 
 var repos = pushover(__dirname + '/repos');
