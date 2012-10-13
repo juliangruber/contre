@@ -8,6 +8,6 @@ var contre = Contre({
 
 contre.on('release', function(repo, rev) {
   console.log('released ' + repo + '/' + rev);
-})
+});
 
 http.createServer(contre.handle()).listen(3000);

@@ -7,6 +7,10 @@ var contre = Contre({
   to : __dirname + '/static'
 });
 
+contre.on('release', function(repo, rev) {
+  console.log('released ' + repo + '/' + rev);
+});
+
 var repos = pushover(__dirname + '/repos');
 
 repos.on('push', function(push) {

@@ -4,8 +4,8 @@ var EventEmitter = require('events').EventEmitter;
 var pushover = require('pushover');
 
 module.exports = function(opts) {
-  if (!opts.repos || !opts.static) {
-    throw new Error('opts.{repos,static} required');
+  if (!opts.from || !opts.to) {
+    throw new Error('opts.{from,to} required');
   }
   return new Contre(opts);
 };
@@ -37,7 +37,7 @@ Contre.prototype.release = function(push) {
   var rev = push.branch || push.version;
   var repos = self.repos;
 
-  var dest = self.static + '/' + repo.Clean + '/' + rev;
+  var dest = self.static + '/' + repoClean + '/' + rev;
 
   push.on('accept', function() {
     push.on('exit', function() {
@@ -48,7 +48,7 @@ Contre.prototype.release = function(push) {
           ps.on('exit', this.ok);
         })
         .seq(function() {
-          self.emit('laid', repoClean, rev);
+          self.emit('release', repoClean, rev);
           if (rev == 'master') return;
           var ps = spawn('git', ['checkout', rev], { cwd : dest });
         })
