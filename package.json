@@ -10,7 +10,13 @@
     "seq": "~0.3.5",
     "pushover": "~1.0.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/juliangruber/git-laid"

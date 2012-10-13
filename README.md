@@ -1,17 +1,17 @@
 
-# lay-out
+# gitlaid
 
 Lay out git repos on a filesystem - github style
 
 ## Usage
 
 ```javascript
-var LayOut = require('lay-out');
+var GitLaid = require('gitlaid');
 var http = require('http');
 
-var layer = LayOut({
-  repos : __dirname + '/repos',
-  static : __dirname + '/static'
+var layer = GitLaid({
+  from : __dirname + '/repos',
+  to : __dirname + '/static'
 });
 
 layer.on('laid', function(repo, rev) {
@@ -21,7 +21,7 @@ layer.on('laid', function(repo, rev) {
 http.createServer(layer.handle()).listen(3000);
 ```
 
-Now push some repo with a file `foo.txt` to `lay-out`:
+Now push some repo with a file `foo.txt` to `gitlaid`:
 
 ```bash
 $ git push http://localhost:3000/test.git master
@@ -43,25 +43,27 @@ Tadaa!
 ## Installation
 
 ```bash
-$ npm install lay-out
+$ npm install gitlaid
 ```
 
 ## API
 
-### LayOut(opts)
+### GitLaid(opts)
 
-`opts` needs:
+Required `opts`:
 
-* `repos`: Directory that contains all repos
-* `static`: Directory in which all repos will be layed out
+* `from`: Directory that contains all repos
+* `to`: Directory in which all repos will be layed out
 
-### LayOut#handle()
+### GitLaid#handle()
 
-Returns a new request handler to be passed to `http.createServer()` that does all the stuff.
+Returns a new request handler to be passed to `http.createServer()` that does
+all the stuff.
 
-### LayOut#lay(push|tag)
+### GitLaid#lay(push|tag)
 
-Used internally by `LayOut#handle()`. Use this if you need to do more on each `push`/`tag`. See `examples/custom`.
+Used internally by `GitLaid#handle()`. Use this if you need to do more on each
+push/tag. See `examples/custom`.
 
 ## License
 

@@ -2,8 +2,8 @@ var LayOut = require('../../');
 var http = require('http');
 
 var layer = LayOut({
-  repos : __dirname + '/repos',
-  static : __dirname + '/static'
+  from : __dirname + '/repos',
+  to : __dirname + '/static'
 });
 
 layer.on('laid', function(repo, rev) {
