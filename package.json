@@ -1,6 +1,6 @@
 {
   "name": "contre",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Continuously release git repos into github-style directories",
   "main": "index.js",
   "directories": {
