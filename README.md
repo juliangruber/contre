@@ -19,6 +19,13 @@ var contre = Contre({
 
 http.createServer(contre.handle()).listen(3000);
 ```
+Or in an empty directory:
+
+```bash
+$ npm install -g contre
+$ contre 3000
+contre listening on port 3000
+```
 
 Now push some repo with a file `foo.txt` to `contre`:
 

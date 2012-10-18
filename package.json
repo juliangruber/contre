@@ -1,6 +1,6 @@
 {
   "name": "contre",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Continuously release git repos into github-style directories",
   "main": "index.js",
   "directories": {
@@ -17,6 +17,9 @@
   },
   "scripts": {
     "test": "mocha"
+  },
+  "bin": {
+    "contre": "bin/contre.js"
   },
   "repository": {
     "type": "git",
