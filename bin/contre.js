@@ -5,8 +5,8 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path');
 
-if (!fs.existsSync('repos')) fs.mkdirSync('repos');
-if (!fs.existsSync('static')) fs.mkdirSync('static');
+if (!exists('repos')) fs.mkdirSync('repos');
+if (!exists('static')) fs.mkdirSync('static');
 
 var contre = Contre({
   from : 'repos',
@@ -18,6 +18,6 @@ http.createServer(contre.handle()).listen(port, function() {
   console.log('contre listening on port ' + port);
 });
 
-var exists = function(file) {
+function exists(file) {
   return (fs.existsSync || path.existsSync)(file);
 }
