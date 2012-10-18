@@ -73,11 +73,7 @@ all the stuff.
 Used internally by `Contre#handle()`. Use this if you need to do more on each
 push/tag. See `examples/custom`.
 
-`push`/`tag` comes directly from
-[pushover](https://github.com/substack/pushover) or is an object with keys
-
-* repo: relative path to the repo from repo root, see `from`
-* branch/version: revision to check out 
+`push`/`tag` must come directly from [pushover](https://github.com/substack/pushover)
 
 ## License
 
