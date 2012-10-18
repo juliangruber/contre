@@ -1,4 +1,3 @@
-
 # contre
 
 Continuously release from git repos into a github-style directory structure.
@@ -22,7 +21,6 @@ http.createServer(contre.handle()).listen(3000);
 Or in an empty directory:
 
 ```bash
-$ npm install -g contre
 $ contre 3000
 contre listening on port 3000
 ```
@@ -50,6 +48,7 @@ Tadaa!
 
 ```bash
 $ npm install contre
+$ npm install -g contre
 ```
 
 ## API
@@ -74,11 +73,7 @@ all the stuff.
 Used internally by `Contre#handle()`. Use this if you need to do more on each
 push/tag. See `examples/custom`.
 
-`push`/`tag` comes directly from
-[pushover](https://github.com/substack/pushover) or is an object with keys
-
-* repo: relative path to the repo from repo root, see `from`
-* branch/version: revision to check out 
+`push`/`tag` must come directly from [pushover](https://github.com/substack/pushover)
 
 ## License
 
